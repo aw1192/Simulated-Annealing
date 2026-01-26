@@ -9,4 +9,12 @@ Fouskakis, Dimitris, and David Draper. “Stochastic Optimization: A Review.” 
 
 Koonin, S.E. (1990). Computational Physics: Fortran Version (1st ed.). CRC Press. https://doi.org/10.1201/9780429494024
 
+Other resources:
 https://www.geeksforgeeks.org/python/python-initialize-empty-array-of-given-length/
+
+https://stackoverflow.com/questions/49039436/how-to-import-a-module-from-a-different-folder
+
+https://www.geeksforgeeks.org/python/how-to-check-the-execution-time-of-python-script/
+
+https://www.geeksforgeeks.org/python/timeit-python-examples/
+
