@@ -11,6 +11,7 @@ Koonin, S.E. (1990). Computational Physics: Fortran Version (1st ed.). CRC Press
 
 https://github.com/nathanrooy/simulated-annealing
 
+https://web.mit.edu/6.435/www/Hajek88.pdf
 
 Other resources:
 https://www.geeksforgeeks.org/python/python-initialize-empty-array-of-given-length/
@@ -20,4 +21,6 @@ https://stackoverflow.com/questions/49039436/how-to-import-a-module-from-a-diffe
 https://www.geeksforgeeks.org/python/how-to-check-the-execution-time-of-python-script/
 
 https://www.geeksforgeeks.org/python/timeit-python-examples/
+
+
 
