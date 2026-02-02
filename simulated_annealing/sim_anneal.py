@@ -13,7 +13,7 @@ class Optimize:
     def simple_geo(self):
         self.T = self.T*(1-0.01) # 0.01 is epsilon
     
-    ### thermalization 
+    ### thermalization (dont use, remove)
 
     def therm_min(self, func):
         for i in range(self.therm_iter):
