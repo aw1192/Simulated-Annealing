@@ -1,19 +1,13 @@
-import timeit
-
-
-a = '''
+import time
 from simulated_annealing.sim_anneal import Optimize
-from simulated_annealing.test_funcs import rastrigin
+
+t1 = time.perf_counter()
+f = Optimize('rastrigin', [10,2,5675,67,1], 1000, 0.01, 100000, 3)
 
 
-test = Optimize(5,100,0.01,10000 , 5, 10)
+print(f.sim_ann(f.simple_geometric))
 
-sa = test.sim_ann(rastrigin, test.simple_geo)
-print(sa)'''
+t2 = time.perf_counter()
+print(f'Time elapsed: {t2-t1}')
 
-t = timeit.timeit(a,number=10)
 
-# egg = Optimize([100, 200], 100, 0.01, 10000, 5, 10)
-
-# sa2 = egg.sim_ann(eggholder, test.simple_geo)
-#print(sa2)
