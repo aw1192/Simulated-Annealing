@@ -11,7 +11,8 @@ class Optimize(Func):
         self.x = x # data; scalar or vector
 
         self.T_init = T # initial temp and temp to start with each temperature reset; scalar
-
+        
+        self.T = T
         self.Tf = Tf # final temp; scalar
         self.total_iter = total_iter # no. of iterations; scalar
         self.delta = delta # step size; scalar
