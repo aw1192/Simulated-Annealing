@@ -1,6 +1,10 @@
 # Simulated Annealing Optimization
 Implementing simulated annealing algorithms on common optimization functions. 
 
+# ROADMAP
+- Create new temperature schedules.
+- Find the best parameters to optimize certain functions.
+- Make visuals.
 
 # Credits
 
