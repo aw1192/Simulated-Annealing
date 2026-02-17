@@ -5,13 +5,15 @@ class Func:
         self.name = name   # name of function
         
         # dictionary of tester functions
-        # first element is function formula, second is (positive) bound
+        # first element is function formula, second is (positive) bound, 3rd is global minimum
         self.funcs = {'rastrigin': (lambda x: 10 * self.d + np.sum(x**2-10*np.cos(2* np.pi*x)),
-                                            5.12),
+                                            5.12, 0),
                                'eggholder': (lambda x: -(x[1] + 47)* np.sin(np.sqrt(abs(x[1]+(x[0]/2) +47)))-x[0]*np.sin(np.sqrt(abs(x[0]-(x[1]+47)))),
-                                             512),
-                               'ackley': (), 
-                               'shubert': ()} 
+                                             512, -959.6407),
+                               'ackley': (lambda x: -20*np.exp(-0.2 * np.sqrt((1/self.d)* np.sum((x)**2)))-np.exp((1/self.d)*np.sum(np.cos(2*np.pi*x)))+20+np.exp(1),
+                                          32.768, 0), 
+                               'holder table': (lambda x: -abs(np.sin(x[0])*np.cos(x[1])*np.exp(abs(1- (np.sqrt(x[0]**2+x[1]**2))/np.pi))),
+                                                10, -19.2085)} 
     
     def eval(self, x):
         try:
