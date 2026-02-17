@@ -6,15 +6,23 @@ class Optimize(Func):
         super().__init__(name)
         
         self.d = np.size(x) # dimension of input
-
+        self.all_x = np.empty((total_iter, self.d)) # Empty array to fit all chosen configurations
+        
         self.x = x # data; scalar or vector
-        self.T = T  # initial temp; scalar
+
+        self.T_init = T # initial temp and temp to start with each temperature reset; scalar
+
         self.Tf = Tf # final temp; scalar
         self.total_iter = total_iter # no. of iterations; scalar
         self.delta = delta # step size; scalar
 
+
+        self.reset_count = 0
+        self.cool_count = 0
+
         self.formula = self.funcs[self.name][0] # formula for the function
         self.bounds = self.funcs[self.name][1] # bounds for the function
+        self.ans = self.funcs[self.name][2]
 
 
     ### Determine if correct datatype, converts to array
@@ -27,14 +35,32 @@ class Optimize(Func):
             return False
 
 
-    ### Different Temp Schedules
+    ### Temp Schedules
 
     # A simple geometric temperature schedule.
-    def simple_geometric(self):
+    def simple_geometric(self, temp):
+        return temp*(1-0.01) # 0.01 is epsilon
+
+
+    # General Cooling Schedule Algorithm
+    def cool(self, sched):
+        self.previous = self.all_x[-2]
+        self.current = self.all_x[-1]
+        
+        
         if self.T > self.Tf:
-            self.T = self.T*(1-0.01) # 0.01 is epsilon
+            self.T = sched(self.T)
         else:
-            pass
+            if np.isclose(self.previous, self.current).all(): # resets temperature 
+                self.cool_count += 1
+                if self.cool_count > 10:
+                    self.cool_count = 0
+                    self.T_init = sched(self.T_init)
+                    self.reset_count += 1
+                else: 
+                    pass
+
+
 
     ### Proposal step for a single element
     def proposal(self, x):
@@ -68,13 +94,15 @@ class Optimize(Func):
     ### Main simulated annealing algorithm.
 
     def sim_ann(self, schedule):
-        all_x = np.empty((self.total_iter, self.d)) # Empty array to fit all chosen configurations
-        
         for i in range(self.total_iter):
-            all_x[i] = np.round(self.opt_min()) # adds the new configuration to the list
-            schedule() # change the temperature according to the schedule
+            self.all_x[i] = np.round(self.opt_min()) # adds the new configuration to the list
+            self.cool(schedule) # change the temperature according to the schedule
 
-        return all_x
+        ans = self.eval(self.all_x[-1])
+        if np.isclose(ans, self.ans):
+            return self.all_x, ans, True
+        else:
+            return self.all_x, ans, False
 
 
         
