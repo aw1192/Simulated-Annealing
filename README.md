@@ -35,5 +35,7 @@ https://www.geeksforgeeks.org/python/how-to-check-the-execution-time-of-python-s
 
 https://www.geeksforgeeks.org/python/timeit-python-examples/
 
+https://algorithmafternoon.com/books/simulated_annealing/chapter02/
+
 
 
