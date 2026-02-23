@@ -13,7 +13,10 @@ class Func:
                                'ackley': (lambda x: -20*np.exp(-0.2 * np.sqrt((1/self.d)* np.sum((x)**2)))-np.exp((1/self.d)*np.sum(np.cos(2*np.pi*x)))+20+np.exp(1),
                                           32.768, 0), 
                                'holder table': (lambda x: -abs(np.sin(x[0])*np.cos(x[1])*np.exp(abs(1- (np.sqrt(x[0]**2+x[1]**2))/np.pi))),
-                                                10, -19.2085)} 
+                                                10, -19.2085),
+                                'levy function 13': (lambda x: (np.sin(3*np.pi*x[0]))**2+(x[0]-1)**2 * (1+(np.sin(3*np.pi*x[1]))**2)+(x[1]-1)**2 * (1+(np.sin(2*np.pi*x[1]))**2),
+                                                     10, 0)                
+                                } 
     
     def eval(self, x):
         try:

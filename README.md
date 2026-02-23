@@ -37,5 +37,6 @@ https://www.geeksforgeeks.org/python/timeit-python-examples/
 
 https://algorithmafternoon.com/books/simulated_annealing/chapter02/
 
+https://www.delftstack.com/howto/numpy/python-numpy-zip/
 
 
